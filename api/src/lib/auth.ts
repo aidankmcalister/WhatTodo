@@ -11,7 +11,11 @@ export const getCurrentUser = async (
   if (!decoded) {
     return null
   }
-  const user = await db.user.findUnique({ where: { auth0id: decoded.sub } })
+  const user = await db.user.findUnique({
+    where: {
+      auth0id: decoded.sub,
+    },
+  })
 
   if (user) {
     console.log('returning existing user')
