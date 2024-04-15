@@ -1,30 +1,42 @@
-import type { Decoded } from '@redwoodjs/api'
+import { parseJWT, type Decoded } from '@redwoodjs/api'
 import { AuthenticationError, ForbiddenError } from '@redwoodjs/graphql-server'
 
 import { db } from './db'
 
 type RedwoodUser = Record<string, unknown> & { roles?: string[] }
-
+const namespace = 'http://localhost:8910'
 export const getCurrentUser = async (
   decoded: Decoded
 ): Promise<RedwoodUser | null> => {
   if (!decoded) {
     return null
   }
+
   const user = await db.user.findUnique({
     where: {
       auth0id: decoded.sub,
     },
   })
-
   if (user) {
     console.log('returning existing user')
     return { ...decoded, ...user }
   } else {
     const newUser = await createUser(decoded)
+
     console.log('returning new user')
     return { ...decoded, ...newUser }
   }
+}
+
+const createUser = async (data) => {
+  return db.user.create({
+    data: {
+      auth0id: data.sub,
+      name: data[`${namespace}/name`],
+      email: data[`${namespace}/email`],
+      picture: data[`${namespace}/picture`],
+    },
+  })
 }
 
 export const isAuthenticated = (): boolean => {
@@ -69,17 +81,6 @@ export const requireAuth = ({ roles }: { roles?: AllowedRoles } = {}) => {
   if (roles && !hasRole(roles)) {
     throw new ForbiddenError("You don't have access to do that.")
   }
-}
-
-const createUser = async (decoded) => {
-  return db.user.create({
-    data: {
-      auth0id: decoded.sub,
-      name: decoded.name,
-      email: decoded.email,
-      picture: decoded.picture,
-    },
-  })
 }
 
 // /**
