@@ -39,7 +39,7 @@ const HomePage = () => {
           Log Out
         </button>
       </header>
-      <section className="p-5"></section>
+      <section className="p-5">{JSON.stringify(currentUser)}</section>
     </>
   )
 }

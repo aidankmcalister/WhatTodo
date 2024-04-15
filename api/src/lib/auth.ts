@@ -11,7 +11,7 @@ export const getCurrentUser = async (
   if (!decoded) {
     return null
   }
-
+  console.log(decoded)
   const user = await db.user.findUnique({
     where: {
       auth0id: decoded.sub,
@@ -29,10 +29,15 @@ export const getCurrentUser = async (
 }
 
 const createUser = async (data) => {
+  const name =
+    data[`${namespace}/name`] === data[`${namespace}/email`]
+      ? data[`${namespace}/nickname`]
+      : data[`${namespace}/name`]
+
   return db.user.create({
     data: {
       auth0id: data.sub,
-      name: data[`${namespace}/name`],
+      name: name,
       email: data[`${namespace}/email`],
       picture: data[`${namespace}/picture`],
     },
