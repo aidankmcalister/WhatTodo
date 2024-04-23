@@ -1,4 +1,7 @@
-import type { FindTodoQuery, FindTodoQueryVariables } from 'types/graphql'
+import type {
+  FindTodosByUserQuery,
+  FindTodosByUserQueryVariables,
+} from 'types/graphql'
 
 import type {
   CellSuccessProps,
@@ -7,12 +10,14 @@ import type {
 } from '@redwoodjs/web'
 
 export const QUERY: TypedDocumentNode<
-  FindTodoQuery,
-  FindTodoQueryVariables
+  FindTodosByUserQuery,
+  FindTodosByUserQueryVariables
 > = gql`
-  query FindTodoQuery($id: Int!) {
-    todo: todo(id: $id) {
+  query FindTodosByUserQuery {
+    todoItemsByUser {
       id
+      title
+      completed
     }
   }
 `
@@ -23,12 +28,12 @@ export const Empty = () => <div>Empty</div>
 
 export const Failure = ({
   error,
-}: CellFailureProps<FindTodoQueryVariables>) => (
+}: CellFailureProps<FindTodosByUserQueryVariables>) => (
   <div style={{ color: 'red' }}>Error: {error?.message}</div>
 )
 
 export const Success = ({
-  todo,
-}: CellSuccessProps<FindTodoQuery, FindTodoQueryVariables>) => {
-  return <div>{JSON.stringify(todo)}</div>
+  todoItemsByUser,
+}: CellSuccessProps<FindTodosByUserQuery, FindTodosByUserQueryVariables>) => {
+  return <div>{JSON.stringify(todoItemsByUser)}</div>
 }

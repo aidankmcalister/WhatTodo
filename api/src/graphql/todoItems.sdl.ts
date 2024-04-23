@@ -11,6 +11,7 @@ export const schema = gql`
 
   type Query {
     todoItems: [TodoItem!]! @requireAuth
+    todoItemsByUser: [TodoItem!] @requireAuth
     todoItem(id: String!): TodoItem @requireAuth
   }
 
