@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import type {
   FindTodosByUserQuery,
   FindTodosByUserQueryVariables,
@@ -10,6 +12,8 @@ import type {
 } from '@redwoodjs/web'
 
 import TodoList from 'src/components/TodoList'
+
+import NewTodoDialog from '../NewTodoDialog/NewTodoDialog'
 
 export const QUERY: TypedDocumentNode<
   FindTodosByUserQuery,
@@ -37,8 +41,19 @@ export const Failure = ({
 export const Success = ({
   todoItems,
 }: CellSuccessProps<FindTodosByUserQuery, FindTodosByUserQueryVariables>) => {
+  const [newTodoOpen, setNewTodoOpen] = useState(false)
+
   return (
     <div>
+      <button
+        className="mb-3 w-full cursor-pointer rounded-md border px-2 py-1 shadow-sm hover:bg-gray-200"
+        onClick={() => {
+          setNewTodoOpen((prev) => !prev)
+        }}
+      >
+        New Todo
+      </button>
+      <NewTodoDialog open={newTodoOpen} setOpen={setNewTodoOpen} />
       <TodoList todoItems={todoItems} />
     </div>
   )
