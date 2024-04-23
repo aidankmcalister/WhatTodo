@@ -8,10 +8,10 @@ const Header = () => {
         <div className="flex items-center space-x-3">
           <img
             className="h-8 rounded-full"
-            src={currentUser.picture}
-            alt={currentUser.name}
+            src={currentUser.picture as string}
+            alt={currentUser.name as string}
           />
-          <p>{currentUser.name}</p>
+          <p>{currentUser.name as string}</p>
         </div>
       )}
       <button
