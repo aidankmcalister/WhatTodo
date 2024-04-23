@@ -9,7 +9,7 @@ import type {
   TypedDocumentNode,
 } from '@redwoodjs/web'
 
-import TodoList from '../TodoList/TodoList'
+import TodoList from 'src/components/TodoList'
 
 export const QUERY: TypedDocumentNode<
   FindTodosByUserQuery,

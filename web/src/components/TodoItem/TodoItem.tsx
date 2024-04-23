@@ -12,18 +12,20 @@ const TodoItem = ({ item }) => {
   }
 
   return (
-    <label className="flex w-full cursor-pointer space-x-3 rounded-md border p-5 shadow-sm">
-      <input
-        type="checkbox"
-        defaultChecked={item.completed}
-        onClick={handleCheckboxClick}
-        onChange={() => {}}
-      />
-      <div className="flex w-full items-center justify-between">
-        <p>{item.title}</p>
-        <TrashIcon className="w-5" onClick={handleTrashIconClick} />
-      </div>
-    </label>
+    <li>
+      <label className="flex w-full cursor-pointer space-x-3 rounded-md border p-5 shadow-sm">
+        <input
+          type="checkbox"
+          defaultChecked={item.completed}
+          onClick={handleCheckboxClick}
+          onChange={() => {}}
+        />
+        <div className="flex w-full items-center justify-between">
+          <p>{item.title}</p>
+          <TrashIcon className="w-5" onClick={handleTrashIconClick} />
+        </div>
+      </label>
+    </li>
   )
 }
 

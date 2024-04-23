@@ -1,12 +1,12 @@
-import TodoItem from '../TodoItem/TodoItem'
+import TodoItem from 'src/components/TodoItem'
 
 const TodoList = ({ todoItems }) => {
   return (
-    <div className="w-64 space-y-3">
+    <ul className="w-64 space-y-3">
       {todoItems.map((item) => (
         <TodoItem key={item.id} item={item} />
       ))}
-    </div>
+    </ul>
   )
 }
 
