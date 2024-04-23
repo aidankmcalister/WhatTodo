@@ -1,8 +1,11 @@
-const TodoList = () => {
+import TodoItem from '../TodoItem/TodoItem'
+
+const TodoList = ({ todoItems }) => {
   return (
-    <div>
-      <h2>{'TodoList'}</h2>
-      <p>{'Find me in ./web/src/components/TodoList/TodoList.tsx'}</p>
+    <div className="w-64 space-y-3">
+      {todoItems.map((item) => (
+        <TodoItem key={item.id} item={item} />
+      ))}
     </div>
   )
 }

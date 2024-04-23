@@ -9,12 +9,14 @@ import type {
   TypedDocumentNode,
 } from '@redwoodjs/web'
 
+import TodoList from '../TodoList/TodoList'
+
 export const QUERY: TypedDocumentNode<
   FindTodosByUserQuery,
   FindTodosByUserQueryVariables
 > = gql`
   query FindTodosByUserQuery {
-    todoItemsByUser {
+    todoItems: todoItemsByUser {
       id
       title
       completed
@@ -33,7 +35,11 @@ export const Failure = ({
 )
 
 export const Success = ({
-  todoItemsByUser,
+  todoItems,
 }: CellSuccessProps<FindTodosByUserQuery, FindTodosByUserQueryVariables>) => {
-  return <div>{JSON.stringify(todoItemsByUser)}</div>
+  return (
+    <div>
+      <TodoList todoItems={todoItems} />
+    </div>
+  )
 }
