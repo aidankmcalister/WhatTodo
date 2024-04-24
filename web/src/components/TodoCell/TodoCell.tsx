@@ -53,7 +53,7 @@ export const Success = ({
   return (
     <div>
       <Button
-        className="mb-3 w-full"
+        className="mb-3 h-10 w-full"
         onClick={() => {
           setNewTodoOpen((prev) => !prev)
         }}
