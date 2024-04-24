@@ -24,6 +24,7 @@ export const QUERY: TypedDocumentNode<
       id
       title
       completed
+      createdAt
     }
   }
 `
@@ -43,6 +44,12 @@ export const Success = ({
 }: CellSuccessProps<FindTodosByUserQuery, FindTodosByUserQueryVariables>) => {
   const [newTodoOpen, setNewTodoOpen] = useState(false)
 
+  const sortedTodoList = [...todoItems]
+    .sort((a, b) => {
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+    })
+    .reverse()
+
   return (
     <div>
       <button
@@ -54,7 +61,7 @@ export const Success = ({
         New Todo
       </button>
       <NewTodoDialog open={newTodoOpen} setOpen={setNewTodoOpen} />
-      <TodoList todoItems={todoItems} />
+      <TodoList todoItems={sortedTodoList} />
     </div>
   )
 }
