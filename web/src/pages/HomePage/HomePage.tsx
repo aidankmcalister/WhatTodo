@@ -1,6 +1,6 @@
 import { Metadata } from '@redwoodjs/web'
 
-import HeroSection from 'src/components/HeroSection'
+import HeroSection from 'src/components/HeroSection/HeroSection'
 
 const HomePage = () => {
   return (

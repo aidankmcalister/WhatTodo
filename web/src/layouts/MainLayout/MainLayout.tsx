@@ -12,7 +12,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
       <section className="flex flex-grow flex-col items-center p-5">
         {children}
       </section>
-      <Footer />
+      {/* <Footer /> */}
     </section>
   )
 }
