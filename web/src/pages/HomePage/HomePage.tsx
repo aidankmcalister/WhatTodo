@@ -7,7 +7,7 @@ const HomePage = () => {
     <>
       <Metadata title="Home" description="Home page" />
 
-      <section className="flex flex-grow flex-col items-center p-5">
+      <section className="flex flex-grow flex-col items-center">
         <HeroSection />
       </section>
     </>

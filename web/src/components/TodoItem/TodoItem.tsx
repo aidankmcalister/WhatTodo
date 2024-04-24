@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react'
 
-import { TrashIcon } from '@heroicons/react/24/outline'
+import { TrashIcon } from '@heroicons/react/24/solid'
 import { format } from 'date-fns'
 
 import { useMutation } from '@redwoodjs/web'
@@ -59,8 +59,8 @@ const TodoItem = ({ item }) => {
   }
 
   return (
-    <li>
-      <label className="flex w-full cursor-pointer space-x-3 rounded-md border p-5 shadow-sm">
+    <li className="rounded-md dark:bg-gray-800">
+      <label className="flex w-full cursor-pointer space-x-3 rounded-md border p-5 shadow-sm dark:border-gray-700">
         <input
           type="checkbox"
           checked={completed}
@@ -68,12 +68,15 @@ const TodoItem = ({ item }) => {
         />
         <div className="flex w-full items-center justify-between">
           <div className="flex flex-col">
-            <p className="font-medium">{item.title}</p>
+            <p className="font-medium dark:text-gray-300">{item.title}</p>
             <p className="text-sm text-gray-500">
               {format(item.createdAt, 'PP')}
             </p>
           </div>
-          <TrashIcon className="w-5" onClick={handleDelete} />
+          <TrashIcon
+            className="w-9 rounded-full p-1.5 hover:bg-main-red/20 hover:text-main-red/80 dark:text-gray-300 dark:hover:bg-main-red/20"
+            onClick={handleDelete}
+          />
         </div>
       </label>
     </li>

@@ -11,9 +11,9 @@ import type {
   TypedDocumentNode,
 } from '@redwoodjs/web'
 
+import Button from 'src/components/Button/Button'
+import NewTodoDialog from 'src/components/NewTodoDialog/NewTodoDialog'
 import TodoList from 'src/components/TodoList'
-
-import NewTodoDialog from '../NewTodoDialog/NewTodoDialog'
 
 export const QUERY: TypedDocumentNode<
   FindTodosByUserQuery,
@@ -52,14 +52,14 @@ export const Success = ({
 
   return (
     <div>
-      <button
-        className="mb-3 w-full cursor-pointer rounded-md border px-2 py-1 shadow-sm hover:bg-gray-200"
+      <Button
+        className="mb-3 w-full"
         onClick={() => {
           setNewTodoOpen((prev) => !prev)
         }}
       >
         New Todo
-      </button>
+      </Button>
       <NewTodoDialog open={newTodoOpen} setOpen={setNewTodoOpen} />
       <TodoList todoItems={sortedTodoList} />
     </div>

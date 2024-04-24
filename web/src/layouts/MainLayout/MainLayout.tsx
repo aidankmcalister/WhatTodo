@@ -1,4 +1,4 @@
-import Footer from 'src/components/Footer'
+// import Footer from 'src/components/Footer'
 import Header from 'src/components/Header'
 
 type MainLayoutProps = {
@@ -7,7 +7,7 @@ type MainLayoutProps = {
 
 const MainLayout = ({ children }: MainLayoutProps) => {
   return (
-    <section className="flex min-h-screen flex-col justify-between">
+    <section className="flex min-h-screen flex-col justify-between dark:bg-gray-900">
       <Header />
       <section className="flex flex-grow flex-col items-center p-5">
         {children}

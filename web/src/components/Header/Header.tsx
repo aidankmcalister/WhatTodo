@@ -1,13 +1,45 @@
-import { ListBulletIcon } from '@heroicons/react/24/solid'
+import React, { useEffect, useReducer } from 'react'
+
+import { MoonIcon as MoonIconOutline } from '@heroicons/react/24/outline'
+import {
+  ListBulletIcon,
+  MoonIcon as MoonIconSolid,
+} from '@heroicons/react/24/solid'
 
 import { useAuth } from 'src/auth'
 import Button from 'src/components/Button/Button'
 
+// Action types
+const TOGGLE_DARK_MODE = 'TOGGLE_DARK_MODE'
+
+// Reducer function
+const reducer = (state, action) => {
+  switch (action.type) {
+    case TOGGLE_DARK_MODE:
+      return !state
+    default:
+      return state
+  }
+}
+
 const Header = () => {
   const { isAuthenticated, currentUser, signUp, logIn, logOut } = useAuth()
+
+  // Initialize darkMode state with useReducer
+  const [darkMode, dispatch] = useReducer(reducer, false)
+
+  // useEffect hook to update body class when darkMode changes
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark')
+    } else {
+      document.body.classList.remove('dark')
+    }
+  }, [darkMode])
+
   return (
-    <header className="flex items-center justify-between space-x-3 border-b p-5 shadow-sm">
-      <ListBulletIcon className="w-10" />
+    <header className="flex items-center justify-between space-x-3 border-b p-5 shadow-sm dark:border-gray-800 dark:shadow-md ">
+      <ListBulletIcon className="w-10 dark:text-white" />
       <div className="flex items-center justify-between space-x-3">
         {isAuthenticated && (
           <div className="flex items-center space-x-3">
@@ -16,34 +48,24 @@ const Header = () => {
               src={currentUser.picture as string}
               alt="Avatar"
             />
-            <p>{currentUser.name as string}</p>
+            <p className="dark:text-white">{currentUser.name as string}</p>
           </div>
         )}
 
         {!isAuthenticated && (
           <div className="flex items-center space-x-3">
-            <Button
-              // className="cursor-pointer rounded-md border bg-main-red px-2 py-1 font-medium text-white shadow-sm hover:bg-gray-200"
-              onClick={signUp}
-            >
-              Sign Up
-            </Button>
-            <Button
-              // className="cursor-pointer rounded-md border px-2 py-1 shadow-sm hover:bg-gray-200"
-              onClick={logIn}
-            >
-              Log In
-            </Button>
+            <Button onClick={signUp}>Sign Up</Button>
+            <Button onClick={logIn}>Log In</Button>
           </div>
         )}
-        {isAuthenticated && (
-          <Button
-            // className="cursor-pointer rounded-md border px-2 py-1 shadow-sm hover:bg-gray-200"
-            onClick={logOut}
-          >
-            Log Out
-          </Button>
-        )}
+        {isAuthenticated && <Button onClick={logOut}>Log Out</Button>}
+        <button onClick={() => dispatch({ type: TOGGLE_DARK_MODE })}>
+          {darkMode ? (
+            <MoonIconSolid className="h-9 w-9 rounded-full p-1 text-white hover:bg-gray-700" />
+          ) : (
+            <MoonIconOutline className="h-9 w-9 rounded-full p-1 text-main-dark-gray hover:bg-gray-200" />
+          )}
+        </button>
       </div>
     </header>
   )
