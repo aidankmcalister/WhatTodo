@@ -58,7 +58,7 @@ export const Success = ({
           setNewTodoOpen((prev) => !prev)
         }}
       >
-        New Todo
+        Create New Todo
       </Button>
       <NewTodoDialog open={newTodoOpen} setOpen={setNewTodoOpen} />
       <TodoList todoItems={sortedTodoList} />
