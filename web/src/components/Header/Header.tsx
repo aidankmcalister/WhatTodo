@@ -5,14 +5,13 @@ import {
   ListBulletIcon,
   MoonIcon as MoonIconSolid,
 } from '@heroicons/react/24/solid'
+import Cookies from 'js-cookie'
 
 import { useAuth } from 'src/auth'
 import Button from 'src/components/Button/Button'
 
-// Action types
 const TOGGLE_DARK_MODE = 'TOGGLE_DARK_MODE'
 
-// Reducer function
 const reducer = (state, action) => {
   switch (action.type) {
     case TOGGLE_DARK_MODE:
@@ -25,16 +24,19 @@ const reducer = (state, action) => {
 const Header = () => {
   const { isAuthenticated, currentUser, signUp, logIn, logOut } = useAuth()
 
-  // Initialize darkMode state with useReducer
-  const [darkMode, dispatch] = useReducer(reducer, false)
+  const [darkMode, dispatch] = useReducer(reducer, false, () => {
+    const darkModeCookie = Cookies.get('darkMode')
+    return darkModeCookie ? JSON.parse(darkModeCookie) : false
+  })
 
-  // useEffect hook to update body class when darkMode changes
   useEffect(() => {
     if (darkMode) {
       document.body.classList.add('dark')
     } else {
       document.body.classList.remove('dark')
     }
+
+    Cookies.set('darkMode', darkMode, { expires: 365 })
   }, [darkMode])
 
   return (

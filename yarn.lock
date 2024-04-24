@@ -14143,6 +14143,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"js-cookie@npm:^3.0.5":
+  version: 3.0.5
+  resolution: "js-cookie@npm:3.0.5"
+  checksum: 10c0/04a0e560407b4489daac3a63e231d35f4e86f78bff9d792011391b49c59f721b513411cd75714c418049c8dc9750b20fcddad1ca5a2ca616c3aca4874cce5b3a
+  languageName: node
+  linkType: hard
+
 "js-levenshtein@npm:^1.1.6":
   version: 1.1.6
   resolution: "js-levenshtein@npm:1.1.6"
@@ -18409,6 +18416,7 @@ __metadata:
     "@redwoodjs/core": "npm:7.3.2"
     "@redwoodjs/project-config": "npm:7.3.2"
     date-fns: "npm:^3.6.0"
+    js-cookie: "npm:^3.0.5"
     prettier-plugin-tailwindcss: "npm:0.4.1"
   languageName: unknown
   linkType: soft
