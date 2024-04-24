@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/16/solid'
 
-import { TextField, Label, Form } from '@redwoodjs/forms'
+import { TextField, Form } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
@@ -66,9 +66,9 @@ const NewTodoDialog = ({ open, setOpen }) => {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6 dark:bg-gray-800">
                 <button
-                  className="absolute right-5 top-5 hidden rounded-full p-1 hover:bg-gray-200 md:block"
+                  className="absolute right-5 top-5 hidden rounded-full p-1 hover:bg-gray-200 md:block dark:text-white dark:hover:bg-gray-700"
                   onClick={() => setOpen(false)}
                 >
                   <XMarkIcon className="w-6" />
@@ -76,7 +76,7 @@ const NewTodoDialog = ({ open, setOpen }) => {
                 <div className="text-center">
                   <Dialog.Title
                     as="h3"
-                    className="text-gray-90 mb-5 text-base font-semibold leading-6"
+                    className="text-gray-90 mb-5 text-base font-semibold leading-6 dark:text-white"
                   >
                     What do you need to do?
                   </Dialog.Title>
@@ -87,11 +87,11 @@ const NewTodoDialog = ({ open, setOpen }) => {
                     <TextField
                       name="title"
                       validation={{ required: true }}
-                      className="rounded-md border px-2 py-1"
+                      className="rounded-md border px-2 py-1 dark:border-none dark:bg-gray-600 dark:text-gray-200"
                     />
 
                     <button
-                      className="mb-3 w-full cursor-pointer rounded-md border px-2 py-1 shadow-sm hover:bg-gray-200"
+                      className="mb-3 w-full cursor-pointer rounded-md bg-main-red px-3  py-1 font-medium text-white shadow-sm  hover:bg-gray-200 hover:bg-main-red/90"
                       type="submit"
                     >
                       Submit
