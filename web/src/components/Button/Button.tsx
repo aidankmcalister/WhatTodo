@@ -1,9 +1,11 @@
-const Button = () => {
+const Button = ({ children, onClick, className = '' }) => {
   return (
-    <div>
-      <h2>{'Button'}</h2>
-      <p>{'Find me in ./web/src/components/Button/Button.tsx'}</p>
-    </div>
+    <button
+      className={`cursor-pointer rounded-md bg-main-red px-3 py-1 font-medium text-white shadow-sm hover:bg-gray-200 hover:bg-main-red/90 ${className}`}
+      onClick={onClick}
+    >
+      {children}
+    </button>
   )
 }
 

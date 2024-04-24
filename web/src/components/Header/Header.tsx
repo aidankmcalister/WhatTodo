@@ -1,6 +1,7 @@
 import { ListBulletIcon } from '@heroicons/react/24/solid'
 
 import { useAuth } from 'src/auth'
+import Button from 'src/components/Button/Button'
 
 const Header = () => {
   const { isAuthenticated, currentUser, signUp, logIn, logOut } = useAuth()
@@ -21,27 +22,27 @@ const Header = () => {
 
         {!isAuthenticated && (
           <div className="flex items-center space-x-3">
-            <button
-              className="cursor-pointer rounded-md border px-2 py-1 shadow-sm hover:bg-gray-200"
+            <Button
+              // className="cursor-pointer rounded-md border bg-main-red px-2 py-1 font-medium text-white shadow-sm hover:bg-gray-200"
               onClick={signUp}
             >
               Sign Up
-            </button>
-            <button
-              className="cursor-pointer rounded-md border px-2 py-1 shadow-sm hover:bg-gray-200"
+            </Button>
+            <Button
+              // className="cursor-pointer rounded-md border px-2 py-1 shadow-sm hover:bg-gray-200"
               onClick={logIn}
             >
               Log In
-            </button>
+            </Button>
           </div>
         )}
         {isAuthenticated && (
-          <button
-            className="cursor-pointer rounded-md border px-2 py-1 shadow-sm hover:bg-gray-200"
+          <Button
+            // className="cursor-pointer rounded-md border px-2 py-1 shadow-sm hover:bg-gray-200"
             onClick={logOut}
           >
             Log Out
-          </button>
+          </Button>
         )}
       </div>
     </header>

@@ -2,6 +2,8 @@ import { navigate, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
 
+import Button from '../Button/Button'
+
 /* eslint-disable jsx-a11y/anchor-is-valid */
 const HeroSection = () => {
   const { isAuthenticated, signUp } = useAuth()
@@ -21,15 +23,15 @@ const HeroSection = () => {
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-600">
             Never miss a beat with this intuitive todo app. Easily add,
-            complete, and prioritize tasks to stay on top of your day.
+            complete, and manage tasks to stay on top of your day.
           </p>
           <div className="mt-10 flex items-center justify-center gap-x-6">
-            <button
+            <Button
               onClick={signUp}
-              className="rounded-md bg-indigo-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="px-3.5 py-2.5 text-sm  hover:bg-main-red/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             >
               Get started
-            </button>
+            </Button>
             {/* <a
               href="#"
               className="text-sm font-semibold leading-6 text-gray-900"
