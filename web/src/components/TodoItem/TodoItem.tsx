@@ -1,6 +1,6 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useState } from 'react'
 
+import { MinusCircleIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
 import { TrashIcon } from '@heroicons/react/24/solid'
 import { format } from 'date-fns'
 
@@ -26,6 +26,7 @@ export const UPDATE_TODO_ITEM_MUTATION = gql`
 
 const TodoItem = ({ item }) => {
   const [completed, setCompleted] = useState(item.completed)
+
   const [updateTodoItem] = useMutation(UPDATE_TODO_ITEM_MUTATION, {
     onError: (error) => console.error('Error updating todo item:', error),
     refetchQueries: ['FindTodosByUserQuery'],
@@ -60,9 +61,15 @@ const TodoItem = ({ item }) => {
 
   return (
     <li className="rounded-md dark:bg-gray-800">
-      <label className="flex w-full cursor-pointer space-x-3 rounded-md border p-5 shadow-sm dark:border-gray-700">
+      <label className="flex w-full cursor-pointer items-center space-x-3 rounded-md border p-5 shadow-sm dark:border-gray-700">
+        {completed ? (
+          <CheckCircleIcon className="mr-1 h-10 w-10 cursor-pointer rounded-full p-1.5 text-green-500 hover:bg-green-100 dark:hover:bg-green-500/20" />
+        ) : (
+          <MinusCircleIcon className="mr-1 h-10 w-10 cursor-pointer rounded-full p-1.5 text-main-red  hover:bg-main-red/20  dark:hover:bg-main-red/20" />
+        )}
         <input
           type="checkbox"
+          className="hidden"
           checked={completed}
           onChange={handleCheckboxClick}
         />
