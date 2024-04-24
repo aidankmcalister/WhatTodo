@@ -10,7 +10,7 @@ const Routes = () => {
       <Set wrap={MainLayout}>
         <Route path="/" page={HomePage} name="home" />
         <PrivateSet unauthenticated="home">
-          <Route path="/todo" page={TodoPage} name="todo" />
+          <Route path="/todos" page={TodoPage} name="todos" />
         </PrivateSet>
       </Set>
       <Route notfound page={NotFoundPage} />
