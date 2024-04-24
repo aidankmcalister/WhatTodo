@@ -5,6 +5,7 @@ import { useAuth } from './auth'
 const Routes = () => {
   return (
     <Router useAuth={useAuth}>
+      <Route path="/todo" page={TodoPage} name="todo" />
       <Set>
         <Route path="/" page={HomePage} name="home" />
       </Set>
