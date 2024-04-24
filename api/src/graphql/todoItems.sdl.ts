@@ -17,7 +17,6 @@ export const schema = gql`
 
   input CreateTodoItemInput {
     title: String!
-    completed: Boolean!
     userId: String!
   }
 
