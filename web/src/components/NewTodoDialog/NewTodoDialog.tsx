@@ -1,6 +1,7 @@
 import { Fragment } from 'react'
 
 import { Dialog, Transition } from '@headlessui/react'
+import { XMarkIcon } from '@heroicons/react/16/solid'
 
 import { TextField, Label, Form } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
@@ -55,7 +56,7 @@ const NewTodoDialog = ({ open, setOpen }) => {
         </Transition.Child>
 
         <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div className="flex min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
             <Transition.Child
               as={Fragment}
               enter="ease-out duration-300"
@@ -66,30 +67,31 @@ const NewTodoDialog = ({ open, setOpen }) => {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
-                <div className="text-center sm:mt-3">
+                <button
+                  className="absolute right-5 top-5 hidden rounded-full p-1 hover:bg-gray-200 md:block"
+                  onClick={() => setOpen(false)}
+                >
+                  <XMarkIcon className="w-6" />
+                </button>
+                <div className="text-center">
                   <Dialog.Title
                     as="h3"
-                    className="text-base font-semibold leading-6 text-gray-900"
+                    className="text-gray-90 mb-5 text-base font-semibold leading-6"
                   >
-                    New Todo Item
+                    What do you need to do?
                   </Dialog.Title>
                   <Form
                     onSubmit={handleSubmit}
                     className="flex flex-col space-y-4"
                   >
-                    <div className="flex flex-col">
-                      <Label name="title" className="font-semibold">
-                        Title
-                      </Label>
-                      <TextField
-                        name="title"
-                        validation={{ required: true }}
-                        className="rounded-md border px-2 py-1"
-                      />
-                    </div>
+                    <TextField
+                      name="title"
+                      validation={{ required: true }}
+                      className="rounded-md border px-2 py-1"
+                    />
 
                     <button
-                      className="rounded-md border px-2 py-1"
+                      className="mb-3 w-full cursor-pointer rounded-md border px-2 py-1 shadow-sm hover:bg-gray-200"
                       type="submit"
                     >
                       Submit
