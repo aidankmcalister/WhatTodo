@@ -1,6 +1,7 @@
 import { ListBulletIcon } from '@heroicons/react/24/solid'
 
 import { useAuth } from 'src/auth'
+
 const Header = () => {
   const { isAuthenticated, currentUser, signUp, logIn, logOut } = useAuth()
   return (
@@ -10,13 +11,14 @@ const Header = () => {
         {isAuthenticated && (
           <div className="flex items-center space-x-3">
             <img
-              className="h-8 rounded-full"
+              className="h-8 w-8 rounded-full border"
               src={currentUser.picture as string}
-              alt={currentUser.name as string}
+              alt="Avatar"
             />
             <p>{currentUser.name as string}</p>
           </div>
         )}
+
         {!isAuthenticated && (
           <div className="flex items-center space-x-3">
             <button
