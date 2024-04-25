@@ -63,9 +63,9 @@ const TodoItem = ({ item }) => {
     <li className="rounded-md dark:bg-gray-800">
       <label className="flex w-full cursor-pointer items-center space-x-3 rounded-md border p-5 shadow-sm dark:border-gray-700">
         {completed ? (
-          <CheckCircleIcon className="mr-1 h-10 w-10 cursor-pointer rounded-full p-1.5 text-green-500 hover:bg-green-100 dark:hover:bg-green-500/20" />
+          <CheckCircleIcon className="mr-1 h-10 w-10 cursor-pointer rounded-full p-1.5 text-green-500 md:hover:bg-green-100 md:dark:hover:bg-green-500/20" />
         ) : (
-          <MinusCircleIcon className="mr-1 h-10 w-10 cursor-pointer rounded-full p-1.5 text-main-red  hover:bg-main-red/20  dark:hover:bg-main-red/20" />
+          <MinusCircleIcon className="mr-1 h-10 w-10 cursor-pointer rounded-full p-1.5 text-main-red  md:hover:bg-main-red/20  md:dark:hover:bg-main-red/20" />
         )}
         <input
           type="checkbox"
@@ -81,7 +81,7 @@ const TodoItem = ({ item }) => {
             </p>
           </div>
           <TrashIcon
-            className="w-9 rounded-full p-1.5 hover:bg-main-red/20 hover:text-main-red/80 dark:text-gray-300 dark:hover:bg-main-red/20"
+            className="w-9 rounded-full p-1.5 md:hover:bg-main-red/20 md:hover:text-main-red/80 dark:text-gray-300 md:dark:hover:bg-main-red/20"
             onClick={handleDelete}
           />
         </div>
