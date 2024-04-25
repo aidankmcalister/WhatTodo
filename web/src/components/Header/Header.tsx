@@ -41,7 +41,12 @@ const Header = () => {
 
   return (
     <header className="flex items-center justify-between space-x-3 border-b p-5 shadow-sm dark:border-gray-800 dark:shadow-md ">
-      <ListBulletIcon className="w-10 dark:text-white" />
+      <div className="flex items-center space-x-2">
+        <ListBulletIcon className="w-10 rounded-full bg-main-red p-1.5 text-white dark:bg-white dark:text-main-red" />
+        <h1 className="text-xl font-medium text-main-red dark:text-white">
+          Todo App Title
+        </h1>
+      </div>
       <div className="flex items-center justify-between space-x-3">
         {isAuthenticated && (
           <div className="flex items-center space-x-3">
@@ -65,7 +70,7 @@ const Header = () => {
           {darkMode ? (
             <MoonIconSolid className="h-9 w-9 rounded-full p-1 text-white hover:bg-gray-700" />
           ) : (
-            <MoonIconOutline className="h-9 w-9 rounded-full p-1 text-main-dark-gray hover:bg-gray-200" />
+            <MoonIconOutline className="h-9 w-9 rounded-full p-1 text-main-red hover:bg-gray-200" />
           )}
         </button>
       </div>
