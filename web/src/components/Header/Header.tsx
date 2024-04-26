@@ -46,7 +46,7 @@ const Header = () => {
       <div className="flex items-center space-x-2">
         <ListBulletIcon className="w-10 rounded-full bg-main-red p-1.5 text-white dark:bg-white dark:text-main-red" />
         <h1 className="text-xl font-medium text-main-red dark:text-white">
-          Todo App
+          WhatTodo
         </h1>
       </div>
       <div className="flex items-center justify-between space-x-3">
@@ -54,7 +54,7 @@ const Header = () => {
           <>
             <div className="hidden items-center space-x-3 md:flex">
               <img
-                className="h-8 w-8 rounded-full border"
+                className="h-8 w-8 rounded-full border border-main-red dark:border"
                 src={currentUser.picture as string}
                 alt="Avatar"
               />
@@ -95,7 +95,7 @@ const MobileMenu = ({ logOut, currentUser }) => {
       <Popover.Button className="inline-flex items-center gap-x-1">
         <div className="flex items-center space-x-3">
           <img
-            className="h-8 w-8 rounded-full border"
+            className="h-8 w-8 rounded-full border-main-red dark:border"
             src={currentUser.picture as string}
             alt="Avatar"
           />
