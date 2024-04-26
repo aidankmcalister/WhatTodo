@@ -1,13 +1,8 @@
 const TestimonialSection = () => {
   return (
-    <div>
+    <section className="2-full flex flex-col items-center justify-center space-y-3">
       <h2>{'TestimonialSection'}</h2>
-      <p>
-        {
-          'Find me in ./web/src/components/TestimonialSection/TestimonialSection.tsx'
-        }
-      </p>
-    </div>
+    </section>
   )
 }
 
