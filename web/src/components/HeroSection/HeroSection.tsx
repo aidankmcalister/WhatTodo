@@ -1,14 +1,11 @@
 import { ArrowRightIcon } from '@heroicons/react/24/solid'
 
-import { navigate, routes } from '@redwoodjs/router'
-
 import { useAuth } from 'src/auth'
 
 import Button from '../Button/Button'
 
-/* eslint-disable jsx-a11y/anchor-is-valid */
 const HeroSection = () => {
-  const { isAuthenticated, signUp } = useAuth()
+  const { signUp } = useAuth()
 
   return (
     <div>
@@ -31,12 +28,6 @@ const HeroSection = () => {
               Get started
               <ArrowRightIcon className="ml-2 w-5" />
             </Button>
-            {/* <a
-              href="#"
-              className="text-sm font-semibold leading-6 text-gray-900"
-            >
-              Learn more <span aria-hidden="true">→</span>
-            </a> */}
           </div>
         </div>
       </div>
