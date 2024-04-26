@@ -29,6 +29,4 @@ To start using the Todo app, follow these steps:
 
 ## Next Steps
 
-For more in-depth learning and community engagement, consider going through the RedwoodJS tutorial and joining the Redwood community forums and Discord server.
-
-Enjoy building with RedwoodJS! If you have any questions or feedback, don't hesitate to reach out to the community for support.
+I plan on making this a scaleable project but at the moment I am unsure of what to add.
