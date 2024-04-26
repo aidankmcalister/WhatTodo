@@ -60,19 +60,31 @@ const TodoItem = ({ item }) => {
   }
 
   return (
-    <li className="rounded-md bg-neutral-50 dark:bg-gray-800">
-      <label className="flex w-full cursor-pointer items-center space-x-3 rounded-md border p-5 shadow-sm dark:border-gray-700">
+    <li
+      className={`rounded-md bg-neutral-50 dark:bg-gray-800 ${
+        completed && ' bg-green-500/10 opacity-50 dark:bg-green-500/10 '
+      }`}
+    >
+      <label
+        className={`flex w-full cursor-pointer items-center space-x-3 rounded-md border p-5 shadow-sm dark:border-gray-700 ${
+          completed && ' border border-transparent dark:border-transparent '
+        }`}
+      >
         {completed ? (
           <CheckCircleIcon className="mr-1 h-10 w-10 cursor-pointer rounded-full p-1.5 text-green-500 md:hover:bg-green-100 md:dark:hover:bg-green-500/20" />
         ) : (
           <MinusCircleIcon className="mr-1 h-10 w-10 cursor-pointer rounded-full p-1.5 text-main-red  md:hover:bg-main-red/20  md:dark:hover:bg-main-red/20" />
         )}
+
+        {/* Start Hidden */}
         <input
           type="checkbox"
           className="hidden"
           checked={completed}
           onChange={handleCheckboxClick}
         />
+        {/* End Hidden */}
+
         <div className="flex w-full items-center justify-between">
           <div className="flex flex-col">
             <p className="font-medium dark:text-gray-300">{item.title}</p>
