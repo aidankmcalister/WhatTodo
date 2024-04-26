@@ -62,7 +62,7 @@ const TodoItem = ({ item }) => {
   return (
     <li
       className={`rounded-md bg-neutral-50 dark:bg-gray-800 ${
-        completed && ' bg-green-500/20 opacity-50 dark:bg-green-500/10 '
+        completed && ' bg-green-400/20 opacity-50 dark:bg-green-500/10 '
       }`}
     >
       <label
