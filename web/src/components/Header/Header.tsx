@@ -52,9 +52,9 @@ const Header = () => {
       <div className="flex items-center justify-between space-x-3">
         {isAuthenticated && (
           <>
-            <div className="hidden items-center space-x-3 md:flex">
+            <div className="hidden items-center space-x-3 rounded-md bg-neutral-100 p-2 font-medium md:flex dark:bg-gray-800">
               <img
-                className="h-8 w-8 rounded-full border border-main-red dark:border"
+                className="h-8 w-8 rounded-full border border-main-red"
                 src={currentUser.picture as string}
                 alt="Avatar"
               />
@@ -93,9 +93,9 @@ const MobileMenu = ({ logOut, currentUser }) => {
   return (
     <Popover className="relative flex items-center md:hidden">
       <Popover.Button className="inline-flex items-center gap-x-1">
-        <div className="flex items-center space-x-3">
+        <div className="flex items-center space-x-3 rounded-md bg-neutral-100 p-2 dark:bg-gray-800">
           <img
-            className="h-8 w-8 rounded-full border-main-red dark:border"
+            className="h-8 w-8 rounded-full border border-main-red"
             src={currentUser.picture as string}
             alt="Avatar"
           />
