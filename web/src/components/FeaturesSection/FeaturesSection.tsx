@@ -10,6 +10,7 @@ const Feature = ({ title, description }) => {
 const FeaturesSection = () => {
   return (
     <section className="2-full flex flex-col items-center justify-center space-y-3">
+      <h1 className="text-2xl font-bold">Features</h1>
       <Feature
         title="Easy Task Management"
         description="Quickly add, complete, and delete tasks with just a few clicks."
