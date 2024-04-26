@@ -1,3 +1,5 @@
+<img src="https://github.com/aidankmcalister/WhatTodo/raw/main/web/public/favicon.png" width="100" /> 
+
 # WhatTodo
 
 Welcome to the Todo app built with RedwoodJS!
