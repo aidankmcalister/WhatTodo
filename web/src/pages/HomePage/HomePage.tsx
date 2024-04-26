@@ -10,7 +10,7 @@ const HomePage = () => {
     <>
       <Metadata title="Home" description="Home page" />
 
-      <section className="flex flex-grow flex-col items-center space-y-10 md:w-[85%]">
+      <section className="flex flex-grow flex-col items-center space-y-32 md:w-[85%]">
         <HeroSection />
         <FeaturesSection />
         <TestimonialSection />
