@@ -2,8 +2,25 @@ import { Fragment } from 'react'
 
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/16/solid'
+import { CheckCircleIcon, MinusCircleIcon } from '@heroicons/react/24/outline'
 
-const FilterMenuDialog = ({ open, setOpen }) => {
+import Button from '../Button/Button'
+
+const FilterMenuDialog = ({ open, setOpen, setFilterStates, filterStates }) => {
+  const toggleShowCompleted = () => {
+    setFilterStates((prev) => ({
+      ...prev,
+      showCompleted: !prev.showCompleted,
+    }))
+  }
+
+  const toggleShowIncomplete = () => {
+    setFilterStates((prev) => ({
+      ...prev,
+      showIncomplete: !prev.showIncomplete,
+    }))
+  }
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
@@ -30,7 +47,7 @@ const FilterMenuDialog = ({ open, setOpen }) => {
               leaveFrom="opacity-100 translate-y-0 sm:scale-100"
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
-              <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6 dark:bg-gray-800">
+              <Dialog.Panel className="relative w-64 transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6 dark:bg-gray-800">
                 <button
                   className="absolute right-5 top-5 hidden rounded-full p-1 hover:bg-gray-200 md:block dark:text-white dark:hover:bg-gray-700"
                   onClick={() => setOpen(false)}
@@ -44,6 +61,24 @@ const FilterMenuDialog = ({ open, setOpen }) => {
                   >
                     Filters
                   </Dialog.Title>
+                  <div className="flex flex-col space-y-3">
+                    <Button
+                      className="flex items-center justify-center py-2"
+                      onClick={toggleShowCompleted}
+                    >
+                      {filterStates.showCompleted
+                        ? 'Showing Completed'
+                        : 'Hiding Completed'}
+                    </Button>
+                    <Button
+                      className="flex items-center justify-center py-2"
+                      onClick={toggleShowIncomplete}
+                    >
+                      {filterStates.showIncomplete
+                        ? 'Showing Incomplete'
+                        : 'Hiding Incomplete'}
+                    </Button>
+                  </div>
                 </div>
               </Dialog.Panel>
             </Transition.Child>

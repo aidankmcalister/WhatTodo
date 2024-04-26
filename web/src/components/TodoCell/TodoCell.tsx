@@ -34,7 +34,8 @@ export const QUERY: TypedDocumentNode<
 lineWobble.register()
 
 const initialFilterStates = {
-  showCompleted: 'false',
+  showCompleted: true,
+  showIncomplete: true,
 }
 
 export const Loading = () => (
@@ -80,18 +81,30 @@ export const Success = ({
           <FunnelIcon className="h-5" />
         </button>
       </div>
-      <p>{JSON.stringify(filteredTodoList)}</p>
       <NewTodoDialog open={newTodoOpen} setOpen={setNewTodoOpen} />
-      <FilterMenuDialog open={openFilterMenu} setOpen={setOpenFilterMenu} />
+      <FilterMenuDialog
+        open={openFilterMenu}
+        setOpen={setOpenFilterMenu}
+        filterStates={filterStates}
+        setFilterStates={setFilterStates}
+      />
       <TodoList todoItems={sortedTodoList} />
     </div>
   )
 }
 
 function filterTodos(todoItems, filterStates) {
-  if (filterStates.showCompleted === 'false') {
-    todoItems = todoItems.filter((item) => item.completed == false)
+  let filteredTodos = [...todoItems] // Make a copy of the original todoItems
+
+  // If showCompleted is 'false', filter out completed todo items
+  if (filterStates.showCompleted === false) {
+    filteredTodos = filteredTodos.filter((item) => !item.completed)
   }
 
-  return todoItems
+  // If showIncomplete is 'false', filter out incomplete todo items
+  if (filterStates.showIncomplete === false) {
+    filteredTodos = filteredTodos.filter((item) => item.completed)
+  }
+
+  return filteredTodos
 }
