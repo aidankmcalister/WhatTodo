@@ -9,7 +9,7 @@ const HeroSection = () => {
 
   return (
     <div className="flex w-full items-center justify-between">
-      <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div className="py-24 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
             Organize your tasks effortlessly.
@@ -17,9 +17,10 @@ const HeroSection = () => {
             Start managing your todos today.
           </h2>
           <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-500">
-            Stay organized and productive with our intuitive todo app. <br />
+            Stay organized and productive with our intuitive todo app.{' '}
+            <br className="hidden md:block" />
             Easily add tasks, mark them as complete, and manage your todos{' '}
-            <br />
+            <br className="hidden md:block" />
             to stay on top of your day.
           </p>
 
@@ -37,7 +38,7 @@ const HeroSection = () => {
       <img
         src="https://placedog.net/700/400"
         alt="hero todo img"
-        className="h-fit"
+        className="hidden h-fit xl:block"
       />
     </div>
   )
