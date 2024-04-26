@@ -10,7 +10,7 @@ const CtaSection = () => {
       <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
         Ready to Get Started?
       </h2>
-      <p className="mx-auto mt-6 max-w-xl text-lg leading-8 text-gray-500">
+      <p className="mx-auto mt-6 max-w-xl text-center text-lg leading-8 text-gray-500 md:text-start">
         Sign up now and start managing your tasks more effectively than ever
         before.
       </p>
