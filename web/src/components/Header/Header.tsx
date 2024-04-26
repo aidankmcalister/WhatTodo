@@ -71,8 +71,10 @@ const Header = () => {
 
         {!isAuthenticated && (
           <div className="flex items-center space-x-3">
-            <Button onClick={signUp}>Sign Up</Button>
-            <Button className="hidden md:block" onClick={logIn}>
+            <Button className="px-4 py-3" onClick={signUp}>
+              Sign Up
+            </Button>
+            <Button className="hidden px-4 py-3 md:block" onClick={logIn}>
               Log In
             </Button>
           </div>
