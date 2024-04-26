@@ -60,7 +60,7 @@ const TodoItem = ({ item }) => {
   }
 
   return (
-    <li className="rounded-md dark:bg-gray-800">
+    <li className="rounded-md bg-neutral-50 dark:bg-gray-800">
       <label className="flex w-full cursor-pointer items-center space-x-3 rounded-md border p-5 shadow-sm dark:border-gray-700">
         {completed ? (
           <CheckCircleIcon className="mr-1 h-10 w-10 cursor-pointer rounded-full p-1.5 text-green-500 md:hover:bg-green-100 md:dark:hover:bg-green-500/20" />
