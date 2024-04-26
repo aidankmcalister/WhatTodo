@@ -73,7 +73,7 @@ const Header = () => {
           </div>
         )}
         {isAuthenticated && (
-          <Button className="hidden md:block" onClick={logOut}>
+          <Button className="hidden h-full px-4 py-3 md:block" onClick={logOut}>
             Log Out
           </Button>
         )}
