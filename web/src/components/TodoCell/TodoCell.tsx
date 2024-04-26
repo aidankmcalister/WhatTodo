@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { lineWobble } from 'ldrs'
 import type {
   FindTodosByUserQuery,
   FindTodosByUserQueryVariables,
@@ -28,8 +29,11 @@ export const QUERY: TypedDocumentNode<
     }
   }
 `
+lineWobble.register()
 
-export const Loading = () => <div>Loading...</div>
+export const Loading = () => (
+  <l-line-wobble size="150" speed="2.5" color={'#D92525'}></l-line-wobble>
+)
 
 export const Failure = ({
   error,
@@ -58,6 +62,7 @@ export const Success = ({
       >
         Create New Todo
       </Button>
+
       <NewTodoDialog open={newTodoOpen} setOpen={setNewTodoOpen} />
       <TodoList todoItems={sortedTodoList} />
     </div>
