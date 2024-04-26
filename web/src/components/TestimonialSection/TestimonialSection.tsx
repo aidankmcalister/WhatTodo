@@ -59,6 +59,7 @@ const TestimonialSection = () => {
           </div>
         ))}
       </div>
+      <p className="text-gray-400 text-sm mt-2">*these are not real testimonials</p>
     </section>
   )
 }
