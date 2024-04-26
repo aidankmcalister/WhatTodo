@@ -35,11 +35,16 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      <img
-        src="https://placedog.net/700/400"
-        alt="hero todo img"
-        className="hidden h-fit xl:block"
-      />
+      <div className="relative hidden xl:block">
+        <img
+          src="https://placedog.net/700/400"
+          alt="hero todo img"
+          className="hidden h-fit rounded-md xl:block"
+        />
+        <p className="absolute bottom-3 left-3 w-fit rounded-md bg-main-red px-4 py-3 text-white">
+          Placeholder Img
+        </p>
+      </div>
     </div>
   )
 }
