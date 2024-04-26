@@ -63,20 +63,26 @@ const FilterMenuDialog = ({ open, setOpen, setFilterStates, filterStates }) => {
                   </Dialog.Title>
                   <div className="flex flex-col space-y-3">
                     <Button
-                      className="flex items-center justify-center py-2"
+                      className={`flex items-center justify-center py-2 ${
+                        !filterStates.showCompleted && 'opacity-50'
+                      }`}
                       onClick={toggleShowCompleted}
                     >
-                      {filterStates.showCompleted
-                        ? 'Showing Completed'
-                        : 'Hiding Completed'}
+                      <div className="flex w-32 items-center">
+                        <CheckCircleIcon className="mr-3 h-5 w-5" />
+                        Completed
+                      </div>
                     </Button>
                     <Button
-                      className="flex items-center justify-center py-2"
+                      className={`flex items-center justify-center py-2 ${
+                        !filterStates.showIncomplete && 'opacity-50'
+                      }`}
                       onClick={toggleShowIncomplete}
                     >
-                      {filterStates.showIncomplete
-                        ? 'Showing Incomplete'
-                        : 'Hiding Incomplete'}
+                      <div className="flex w-32 items-center">
+                        <MinusCircleIcon className="mr-3 h-5 w-5" />
+                        Incompleted
+                      </div>
                     </Button>
                   </div>
                 </div>
