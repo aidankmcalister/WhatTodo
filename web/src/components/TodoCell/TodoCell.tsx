@@ -14,6 +14,7 @@ import type {
 } from '@redwoodjs/web'
 
 import Button from 'src/components/Button/Button'
+import FilterMenuDialog from 'src/components/FilterMenuDialog/FilterMenuDialog'
 import NewTodoDialog from 'src/components/NewTodoDialog/NewTodoDialog'
 import TodoList from 'src/components/TodoList'
 
@@ -67,12 +68,15 @@ export const Success = ({
         </Button>
         <button
           className="mb-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-main-red font-medium text-white shadow-sm hover:bg-gray-200 hover:bg-main-red/90"
-          onClick={openFilterMenu}
+          onClick={() => {
+            setOpenFilterMenu((prev) => !prev)
+          }}
         >
           <FunnelIcon className="h-5" />
         </button>
       </div>
       <NewTodoDialog open={newTodoOpen} setOpen={setNewTodoOpen} />
+      <FilterMenuDialog open={openFilterMenu} setOpen={setOpenFilterMenu} />
       <TodoList todoItems={sortedTodoList} />
     </div>
   )
