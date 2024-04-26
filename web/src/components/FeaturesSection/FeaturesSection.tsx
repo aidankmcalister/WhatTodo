@@ -27,12 +27,3 @@ const FeaturesSection = () => {
 }
 
 export default FeaturesSection
-
-// Features Section:
-
-// Feature 1: "Easy Task Management"
-// Description: "Quickly add, complete, and delete tasks with just a few clicks."
-// Feature 2: "User-Friendly Interface"
-// Description: "Intuitive design that makes navigating and organizing tasks a breeze."
-// Feature 3: "Customizable Categories"
-// Description: "Organize your tasks into customizable categories for better organization."
