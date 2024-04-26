@@ -33,6 +33,10 @@ export const QUERY: TypedDocumentNode<
 `
 lineWobble.register()
 
+const initialFilterStates = {
+  showCompleted: 'false',
+}
+
 export const Loading = () => (
   <l-line-wobble size="150" speed="2.5" color={'#D92525'}></l-line-wobble>
 )
@@ -48,12 +52,13 @@ export const Success = ({
 }: CellSuccessProps<FindTodosByUserQuery, FindTodosByUserQueryVariables>) => {
   const [newTodoOpen, setNewTodoOpen] = useState(false)
   const [openFilterMenu, setOpenFilterMenu] = useState(false)
+  const [filterStates, setFilterStates] = useState(initialFilterStates)
 
-  const sortedTodoList = [...todoItems]
-    .sort((a, b) => {
-      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
-    })
-    .reverse()
+  const filteredTodoList = filterTodos(todoItems, filterStates)
+
+  const sortedTodoList = filteredTodoList.slice().sort((a, b) => {
+    return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+  })
 
   return (
     <div>
@@ -75,9 +80,18 @@ export const Success = ({
           <FunnelIcon className="h-5" />
         </button>
       </div>
+      <p>{JSON.stringify(filteredTodoList)}</p>
       <NewTodoDialog open={newTodoOpen} setOpen={setNewTodoOpen} />
       <FilterMenuDialog open={openFilterMenu} setOpen={setOpenFilterMenu} />
       <TodoList todoItems={sortedTodoList} />
     </div>
   )
+}
+
+function filterTodos(todoItems, filterStates) {
+  if (filterStates.showCompleted === 'false') {
+    todoItems = todoItems.filter((item) => item.completed == false)
+  }
+
+  return todoItems
 }
