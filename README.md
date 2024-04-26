@@ -29,4 +29,4 @@ To start using the Todo app, follow these steps:
 
 ## Next Steps
 
-I plan on making this a scaleable project but at the moment I am unsure of what to add.
+I plan on making this a scaleable project but I am unsure of what to add right now. If you have any ideas, create an issue.
