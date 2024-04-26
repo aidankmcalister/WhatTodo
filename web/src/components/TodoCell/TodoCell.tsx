@@ -1,5 +1,6 @@
 import { useState } from 'react'
 
+import { FunnelIcon } from '@heroicons/react/24/outline'
 import { lineWobble } from 'ldrs'
 import type {
   FindTodosByUserQuery,
@@ -45,6 +46,7 @@ export const Success = ({
   todoItems,
 }: CellSuccessProps<FindTodosByUserQuery, FindTodosByUserQueryVariables>) => {
   const [newTodoOpen, setNewTodoOpen] = useState(false)
+  const [openFilterMenu, setOpenFilterMenu] = useState(false)
 
   const sortedTodoList = [...todoItems]
     .sort((a, b) => {
@@ -54,15 +56,22 @@ export const Success = ({
 
   return (
     <div>
-      <Button
-        className="mb-3 h-10 w-full"
-        onClick={() => {
-          setNewTodoOpen((prev) => !prev)
-        }}
-      >
-        Create New Todo
-      </Button>
-
+      <div className="flex space-x-3">
+        <Button
+          className="mb-3 h-10 w-full"
+          onClick={() => {
+            setNewTodoOpen((prev) => !prev)
+          }}
+        >
+          Create New Todo
+        </Button>
+        <button
+          className="mb-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-main-red font-medium text-white shadow-sm hover:bg-gray-200 hover:bg-main-red/90"
+          onClick={openFilterMenu}
+        >
+          <FunnelIcon className="h-5" />
+        </button>
+      </div>
       <NewTodoDialog open={newTodoOpen} setOpen={setNewTodoOpen} />
       <TodoList todoItems={sortedTodoList} />
     </div>
