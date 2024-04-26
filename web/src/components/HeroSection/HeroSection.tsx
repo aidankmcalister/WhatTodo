@@ -1,3 +1,5 @@
+import { ArrowRightIcon } from '@heroicons/react/24/solid'
+
 import { navigate, routes } from '@redwoodjs/router'
 
 import { useAuth } from 'src/auth'
@@ -28,9 +30,10 @@ const HeroSection = () => {
           <div className="mt-10 flex items-center justify-center gap-x-6">
             <Button
               onClick={signUp}
-              className="px-3.5 py-2.5 text-sm  hover:bg-main-red/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
+              className="flex items-center px-4 py-3 text-lg focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2"
             >
               Get started
+              <ArrowRightIcon className="ml-2 w-5" />
             </Button>
             {/* <a
               href="#"
