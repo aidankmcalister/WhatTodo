@@ -30,17 +30,18 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <section className="2-full flex flex-col items-center justify-center space-y-3">
-      <div className="-mt-8 sm:-mx-4 sm:columns-2 sm:text-[0] lg:columns-3">
+    <section className="2-full flex flex-col items-center justify-center">
+      <h1 className="mb-3 text-2xl font-bold">Testimonials</h1>
+      <div className="space-y-3 sm:columns-2 sm:text-[0] lg:columns-3">
         {testimonials.map((testimonial) => (
           <div
             key={testimonial.author.handle}
-            className="pt-8 sm:inline-block sm:w-full sm:px-4"
+            className="sm:inline-block sm:w-full"
           >
-            <figure className="rounded-md bg-neutral-100 p-8 text-sm leading-6">
-              <blockquote className="text-gray-900">
+            <figure className="rounded-md bg-neutral-100 p-5 text-sm leading-6">
+              <p className="text-gray-900">
                 <p>{`“${testimonial.body}”`}</p>
-              </blockquote>
+              </p>
               <figcaption className="mt-6 flex items-center gap-x-4">
                 <img
                   className="h-10 w-10 rounded-full bg-gray-50"
