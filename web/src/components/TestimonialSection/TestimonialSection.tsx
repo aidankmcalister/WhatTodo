@@ -30,13 +30,13 @@ const testimonials = [
 
 const TestimonialSection = () => {
   return (
-    <section className="2-full flex flex-col items-center justify-center">
-      <h1 className="mb-3 text-2xl font-bold">Testimonials</h1>
-      <div className="space-y-3 sm:columns-2 sm:text-[0] lg:columns-3">
+    <section className="flex flex-col items-center justify-center">
+      <h1 className="mb-3 text-2xl font-bold">What People Have to Say</h1>
+      <div className="space-y-3 sm:text-[0] lg:columns-3 lg:space-y-0 ">
         {testimonials.map((testimonial) => (
           <div
             key={testimonial.author.handle}
-            className="sm:inline-block sm:w-full"
+            className="mx-auto sm:block sm:w-full md:w-[96%]"
           >
             <figure className="rounded-md bg-neutral-100 p-5 text-sm leading-6">
               <p className="text-gray-900">
