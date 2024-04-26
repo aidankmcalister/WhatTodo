@@ -10,10 +10,6 @@ import Button from '../Button/Button'
 const HeroSection = () => {
   const { isAuthenticated, signUp } = useAuth()
 
-  // if (isAuthenticated) {
-  //   navigate(routes.todos())
-  // }
-
   return (
     <div>
       <div className="px-6 py-24 sm:px-6 sm:py-32 lg:px-8">
