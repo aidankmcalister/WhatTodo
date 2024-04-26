@@ -31,15 +31,17 @@ const testimonials = [
 const TestimonialSection = () => {
   return (
     <section className="flex flex-col items-center justify-center">
-      <h1 className="mb-3 text-2xl font-bold">What People Have to Say</h1>
+      <h1 className="mb-3 text-2xl font-bold dark:text-gray-200">
+        What People Have to Say
+      </h1>
       <div className="space-y-3 sm:text-[0] lg:columns-3 lg:space-y-0 ">
         {testimonials.map((testimonial) => (
           <div
             key={testimonial.author.handle}
             className="mx-auto sm:block sm:w-full md:w-[96%]"
           >
-            <figure className="rounded-md bg-neutral-100 p-5 text-sm leading-6">
-              <p className="text-gray-900">
+            <figure className="rounded-md bg-neutral-100 p-5 text-sm leading-6 dark:bg-gray-800">
+              <p className="text-gray-900 dark:text-gray-400">
                 <p>{`“${testimonial.body}”`}</p>
               </p>
               <figcaption className="mt-6 flex items-center gap-x-4">
@@ -49,17 +51,19 @@ const TestimonialSection = () => {
                   alt=""
                 />
                 <div>
-                  <div className="font-semibold text-gray-900">
+                  <div className="font-semibold text-gray-900 dark:text-gray-400">
                     {testimonial.author.name}
                   </div>
-                  <div className="text-gray-600">{`@${testimonial.author.handle}`}</div>
+                  <div className="text-gray-600 dark:text-gray-500">{`@${testimonial.author.handle}`}</div>
                 </div>
               </figcaption>
             </figure>
           </div>
         ))}
       </div>
-      <p className="text-gray-400 text-sm mt-2">*these are not real testimonials</p>
+      <p className="mt-2 text-sm text-gray-400">
+        *these are not real testimonials
+      </p>
     </section>
   )
 }
