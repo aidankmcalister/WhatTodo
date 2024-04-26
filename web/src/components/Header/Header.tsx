@@ -9,6 +9,8 @@ import {
 } from '@heroicons/react/24/solid'
 import Cookies from 'js-cookie'
 
+import { navigate, routes } from '@redwoodjs/router'
+
 import { useAuth } from 'src/auth'
 import Button from 'src/components/Button/Button'
 
@@ -43,23 +45,26 @@ const Header = () => {
 
   return (
     <header className="flex items-center justify-between space-x-3 border-b p-5 shadow-sm dark:border-gray-800 dark:shadow-md ">
-      <div className="flex items-center space-x-2">
+      <button
+        onClick={() => navigate(routes.home())}
+        className="flex items-center space-x-2"
+      >
         <ListBulletIcon className="w-10 rounded-full bg-main-red p-1.5 text-white dark:bg-white dark:text-main-red" />
         <h1 className="text-xl font-medium text-main-red dark:text-white">
           WhatTodo
         </h1>
-      </div>
+      </button>
       <div className="flex items-center justify-between space-x-3">
         {isAuthenticated && (
           <>
-            <div className="hidden items-center space-x-3 rounded-md bg-neutral-100 p-2 font-medium md:flex dark:bg-gray-800">
+            {/* <div className="hidden items-center space-x-3 rounded-md bg-neutral-100 p-2 font-medium md:flex dark:bg-gray-800">
               <img
                 className="h-8 w-8 rounded-full border border-main-red"
                 src={currentUser.picture as string}
                 alt="Avatar"
               />
               <p className="dark:text-white">{currentUser.name as string}</p>
-            </div>
+            </div> */}
             <MobileMenu logOut={logOut} currentUser={currentUser} />
           </>
         )}
@@ -73,8 +78,11 @@ const Header = () => {
           </div>
         )}
         {isAuthenticated && (
-          <Button className="hidden h-full px-4 py-3 md:block" onClick={logOut}>
-            Log Out
+          <Button
+            className="hidden h-full px-4 py-3 md:block"
+            onClick={() => navigate(routes.todos())}
+          >
+            My Todos
           </Button>
         )}
         <button onClick={() => dispatch({ type: TOGGLE_DARK_MODE })}>
@@ -91,7 +99,7 @@ const Header = () => {
 
 const MobileMenu = ({ logOut, currentUser }) => {
   return (
-    <Popover className="relative flex items-center md:hidden">
+    <Popover className="relative flex items-center ">
       <Popover.Button className="inline-flex items-center gap-x-1">
         <div className="flex items-center space-x-3 rounded-md bg-neutral-100 p-2 dark:bg-gray-800">
           <img
@@ -99,6 +107,9 @@ const MobileMenu = ({ logOut, currentUser }) => {
             src={currentUser.picture as string}
             alt="Avatar"
           />
+          <p className="hidden md:block dark:text-white">
+            {currentUser.name as string}
+          </p>
         </div>
         {/* <ChevronDownIcon
           className="h-5 w-5 dark:text-white"
