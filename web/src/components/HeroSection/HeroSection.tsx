@@ -10,9 +10,9 @@ import Button from '../Button/Button'
 const HeroSection = () => {
   const { isAuthenticated, signUp } = useAuth()
 
-  if (isAuthenticated) {
-    navigate(routes.todos())
-  }
+  // if (isAuthenticated) {
+  //   navigate(routes.todos())
+  // }
 
   return (
     <div>
