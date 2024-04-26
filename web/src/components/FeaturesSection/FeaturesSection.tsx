@@ -1,6 +1,6 @@
 const Feature = ({ title, description }) => {
   return (
-    <div className="rounded-md bg-neutral-100 p-5">
+    <div className="h-32 rounded-md bg-neutral-100 p-5">
       <h1 className="mb-3 text-xl font-bold text-gray-800">{title}</h1>
       <p className="text-gray-800">{description}</p>
     </div>
