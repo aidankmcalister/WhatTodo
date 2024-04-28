@@ -24,7 +24,7 @@ export const UPDATE_TODO_ITEM_MUTATION = gql`
   }
 `
 
-const TodoItem = ({ item }) => {
+const TodoItem = ({ item, filterStates }) => {
   const [completed, setCompleted] = useState(item.completed)
 
   const [updateTodoItem] = useMutation(UPDATE_TODO_ITEM_MUTATION, {
@@ -61,42 +61,50 @@ const TodoItem = ({ item }) => {
 
   return (
     <li
-      className={`rounded-md bg-neutral-50 dark:bg-gray-800 ${
-        completed && ' bg-green-400/20 opacity-50 dark:bg-green-500/10 '
+      className={`cursor-pointer rounded-md border bg-neutral-50 shadow-sm dark:border-gray-700 dark:bg-gray-800 ${
+        completed &&
+        ' border border-transparent bg-green-400/20 opacity-50 dark:border-transparent dark:bg-green-500/10  '
       }`}
     >
       <label
-        className={`flex w-full cursor-pointer items-center space-x-3 rounded-md border p-5 shadow-sm dark:border-gray-700 ${
-          completed && ' border border-transparent dark:border-transparent '
-        }`}
+        className={`flex w-full flex-col justify-center p-5 ${
+          completed && ' '
+        } ${item.description && 'space-y-3'}`}
       >
-        {completed ? (
-          <CheckCircleIcon className="mr-1 h-10 w-10 cursor-pointer rounded-full p-1.5 text-green-500 md:hover:bg-green-100 md:dark:hover:bg-green-500/20" />
-        ) : (
-          <MinusCircleIcon className="mr-1 h-10 w-10 cursor-pointer rounded-full p-1.5 text-main-red  md:hover:bg-main-red/20  md:dark:hover:bg-main-red/20" />
-        )}
+        <div className={'flex w-full items-center'}>
+          {completed ? (
+            <CheckCircleIcon className="mr-5 h-10 w-10 cursor-pointer rounded-full p-1.5 text-green-500 md:hover:bg-green-100 md:dark:hover:bg-green-500/20" />
+          ) : (
+            <MinusCircleIcon className="mr-5 h-10 w-10 cursor-pointer rounded-full p-1.5 text-main-red  md:hover:bg-main-red/20  md:dark:hover:bg-main-red/20" />
+          )}
 
-        {/* Start Hidden */}
-        <input
-          type="checkbox"
-          className="hidden"
-          checked={completed}
-          onChange={handleCheckboxClick}
-        />
-        {/* End Hidden */}
-
-        <div className="flex w-full items-center justify-between">
-          <div className="flex flex-col">
-            <p className="font-medium dark:text-gray-300">{item.title}</p>
-            <p className="text-sm text-gray-500">
-              {format(item.createdAt, 'PP')}
-            </p>
-          </div>
-          <TrashIcon
-            className="w-9 rounded-full p-1.5 md:hover:bg-main-red/20 md:hover:text-main-red/80 dark:text-gray-300 md:dark:hover:bg-main-red/20"
-            onClick={handleDelete}
+          {/* Start Hidden */}
+          <input
+            type="checkbox"
+            className="hidden"
+            checked={completed}
+            onChange={handleCheckboxClick}
           />
+          {/* End Hidden */}
+
+          <div className="flex w-full items-center justify-between">
+            <div className="flex flex-col">
+              <p className="font-medium dark:text-gray-300">{item.title}</p>
+              <p className="text-sm text-gray-500">
+                {format(item.createdAt, 'PP')}
+              </p>
+            </div>
+            <TrashIcon
+              className="w-9 rounded-full p-1.5 md:hover:bg-main-red/20 md:hover:text-main-red/80 dark:text-gray-300 md:dark:hover:bg-main-red/20"
+              onClick={handleDelete}
+            />
+          </div>
         </div>
+        {filterStates.showDescriptions && (
+          <p className="text-gray-500 dark:text-gray-400">
+            {item?.description}
+          </p>
+        )}
       </label>
     </li>
   )

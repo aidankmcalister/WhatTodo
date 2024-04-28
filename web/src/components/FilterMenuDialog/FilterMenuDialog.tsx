@@ -2,7 +2,11 @@ import { Fragment } from 'react'
 
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/16/solid'
-import { CheckCircleIcon, MinusCircleIcon } from '@heroicons/react/24/outline'
+import {
+  CheckCircleIcon,
+  MinusCircleIcon,
+  DocumentTextIcon,
+} from '@heroicons/react/24/outline'
 
 import Button from '../Button/Button'
 
@@ -18,6 +22,13 @@ const FilterMenuDialog = ({ open, setOpen, setFilterStates, filterStates }) => {
     setFilterStates((prev) => ({
       ...prev,
       showIncomplete: !prev.showIncomplete,
+    }))
+  }
+
+  const toggleShowDescriptions = () => {
+    setFilterStates((prev) => ({
+      ...prev,
+      showDescriptions: !prev.showDescriptions,
     }))
   }
 
@@ -82,6 +93,17 @@ const FilterMenuDialog = ({ open, setOpen, setFilterStates, filterStates }) => {
                       <div className="flex w-32 items-center">
                         <MinusCircleIcon className="mr-3 h-5 w-5" />
                         Incompleted
+                      </div>
+                    </Button>
+                    <Button
+                      className={`flex items-center justify-center py-2 ${
+                        !filterStates.showDescriptions && 'opacity-50'
+                      }`}
+                      onClick={toggleShowDescriptions}
+                    >
+                      <div className="flex w-32 items-center">
+                        <DocumentTextIcon className="mr-3 h-5 w-5" />
+                        Descriptions
                       </div>
                     </Button>
                   </div>

@@ -10,24 +10,14 @@ export const todoItems: QueryResolvers['todoItems'] = () => {
   return db.todoItem.findMany()
 }
 
-// export const todoItemsByUser: QueryResolvers['todoItemsByUser'] = () => {
-//   if (!context.currentUser) {
-//     throw new Error('User not authenticated')
-//   }
-//   console.log(context.currentUser)
-//   return db.todoItem.findMany({
-//     where: { userId: context.currentUser.id },
-//   })
-// }
-
-export const todoItemsByUser = () => {
-  return db.todoItem.findMany({ where: { userId: context.currentUser.id } })
-}
-
 export const todoItem: QueryResolvers['todoItem'] = ({ id }) => {
   return db.todoItem.findUnique({
     where: { id },
   })
+}
+
+export const todoItemsByUser = () => {
+  return db.todoItem.findMany({ where: { userId: context.currentUser.id } })
 }
 
 export const createTodoItem: MutationResolvers['createTodoItem'] = ({

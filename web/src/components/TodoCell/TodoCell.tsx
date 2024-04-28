@@ -27,6 +27,7 @@ export const QUERY: TypedDocumentNode<
       id
       title
       completed
+      description
       createdAt
     }
   }
@@ -36,6 +37,7 @@ lineWobble.register()
 const initialFilterStates = {
   showCompleted: true,
   showIncomplete: true,
+  showDescriptions: false,
 }
 
 export const Loading = () => (
@@ -88,7 +90,7 @@ export const Success = ({
         filterStates={filterStates}
         setFilterStates={setFilterStates}
       />
-      <TodoList todoItems={sortedTodoList} />
+      <TodoList todoItems={sortedTodoList} filterStates={filterStates} />
     </div>
   )
 }
