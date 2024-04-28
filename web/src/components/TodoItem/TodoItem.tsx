@@ -63,7 +63,7 @@ const TodoItem = ({ item, filterStates }) => {
     <li
       className={`cursor-pointer rounded-md border bg-neutral-50 shadow-sm dark:border-gray-700 dark:bg-gray-800 ${
         completed &&
-        ' border border-transparent bg-green-400/20 opacity-50 dark:border-transparent dark:bg-green-500/10  '
+        ' border border-transparent bg-green-400/25 opacity-50 dark:border-transparent dark:bg-green-500/10  '
       }`}
     >
       <label
