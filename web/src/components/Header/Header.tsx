@@ -129,9 +129,12 @@ const MobileMenu = ({ logOut, currentUser }) => {
         leaveTo="opacity-0 translate-y-1"
       >
         <Popover.Panel className="absolute left-1/2 z-10 mt-32 flex w-screen max-w-min -translate-x-1/2 px-4">
-          <div className="w-auto shrink rounded-xl bg-white p-4 shadow-lg ring-1 ring-gray-900/5 dark:bg-gray-800">
+          <div className="w-auto shrink space-y-3 rounded-xl bg-white p-4 shadow-lg ring-1 ring-gray-900/5 dark:bg-gray-800">
             <Button className="w-32" onClick={logOut}>
               Log Out
+            </Button>
+            <Button className="w-32" onClick={() => navigate(routes.todos())}>
+              My Todos
             </Button>
           </div>
         </Popover.Panel>
