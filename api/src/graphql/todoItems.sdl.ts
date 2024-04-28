@@ -2,6 +2,7 @@ export const schema = gql`
   type TodoItem {
     id: String!
     title: String!
+    description: String
     completed: Boolean!
     createdAt: DateTime!
     updatedAt: DateTime!
@@ -17,11 +18,13 @@ export const schema = gql`
 
   input CreateTodoItemInput {
     title: String!
+    description: String
     userId: String!
   }
 
   input UpdateTodoItemInput {
     title: String
+    description: String
     completed: Boolean
     userId: String
   }
