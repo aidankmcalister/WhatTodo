@@ -92,7 +92,6 @@ const NewTodoDialog = ({ open, setOpen }) => {
                     />
                     <TextAreaField
                       name="description"
-                      validation={{ required: true }}
                       className="rounded-md border px-2 py-1 dark:border-none dark:bg-gray-600 dark:text-gray-200"
                     />
 
