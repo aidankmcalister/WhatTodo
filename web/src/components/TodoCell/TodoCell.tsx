@@ -27,6 +27,7 @@ export const QUERY: TypedDocumentNode<
       id
       title
       completed
+      description
       createdAt
     }
   }

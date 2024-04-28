@@ -92,6 +92,7 @@ const TodoItem = ({ item }) => {
               {format(item.createdAt, 'PP')}
             </p>
           </div>
+          <p>{item.description}</p>
           <TrashIcon
             className="w-9 rounded-full p-1.5 md:hover:bg-main-red/20 md:hover:text-main-red/80 dark:text-gray-300 md:dark:hover:bg-main-red/20"
             onClick={handleDelete}

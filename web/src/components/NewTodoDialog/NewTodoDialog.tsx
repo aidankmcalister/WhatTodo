@@ -3,7 +3,7 @@ import { Fragment } from 'react'
 import { Dialog, Transition } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/16/solid'
 
-import { TextField, Form } from '@redwoodjs/forms'
+import { TextField, TextAreaField, Form } from '@redwoodjs/forms'
 import { useMutation } from '@redwoodjs/web'
 
 import { useAuth } from 'src/auth'
@@ -13,6 +13,7 @@ export const CREATE_TODO_ITEM_MUTATION = gql`
     createTodoItem(input: $input) {
       id
       title
+      description
       userId
     }
   }
@@ -86,6 +87,11 @@ const NewTodoDialog = ({ open, setOpen }) => {
                   >
                     <TextField
                       name="title"
+                      validation={{ required: true }}
+                      className="rounded-md border px-2 py-1 dark:border-none dark:bg-gray-600 dark:text-gray-200"
+                    />
+                    <TextAreaField
+                      name="description"
                       validation={{ required: true }}
                       className="rounded-md border px-2 py-1 dark:border-none dark:bg-gray-600 dark:text-gray-200"
                     />
