@@ -1,4 +1,4 @@
-import {  useState } from 'react'
+import { useState } from 'react'
 
 import {
   CheckCircleIcon,
@@ -16,7 +16,7 @@ const itemsList = [
   },
   {
     id: 2,
-    title: 'Sign up for What Todo',
+    title: 'Sign up for WhatTodo',
     completed: false,
     date: format(subDays(new Date(), 5), 'PP'),
   },
