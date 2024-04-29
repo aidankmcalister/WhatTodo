@@ -36,6 +36,7 @@ const NewTodoDialog = ({ open, setOpen }) => {
         input: {
           ...values,
           userId: currentUser.id,
+          priority: 2,
         },
       },
     })
