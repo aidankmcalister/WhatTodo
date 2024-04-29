@@ -1,15 +1,15 @@
 import { ArrowRightIcon } from '@heroicons/react/24/solid'
 
 import { useAuth } from 'src/auth'
-
-import Button from '../Button/Button'
+import Button from 'src/components/Button'
+import HeroTodoItems from 'src/components/HeroTodoItems'
 
 const HeroSection = () => {
   const { signUp } = useAuth()
 
   return (
     <div className="flex w-full items-center justify-between">
-      <div className="py-24 sm:px-6 sm:py-32 lg:px-8">
+      <div className="pb-0 pt-7 sm:px-6 sm:py-32 lg:px-8">
         <div className="mx-auto max-w-2xl">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl dark:text-white">
             Organize your tasks effortlessly.
@@ -35,15 +35,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-      <div className="relative hidden xl:block">
-        <img
-          src="https://placedog.net/700/400"
-          alt="hero todo img"
-          className="hidden h-fit rounded-md xl:block"
-        />
-        <p className="absolute bottom-3 left-3 w-fit rounded-md bg-main-red px-4 py-3 text-white">
-          Placeholder Img
-        </p>
+      <div className="relative hidden w-[40vw] xl:block">
+        <HeroTodoItems />
       </div>
     </div>
   )
