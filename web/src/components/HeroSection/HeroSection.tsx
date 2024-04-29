@@ -1,8 +1,8 @@
 import { ArrowRightIcon } from '@heroicons/react/24/solid'
 
 import { useAuth } from 'src/auth'
-
-import Button from '../Button/Button'
+import Button from 'src/components/Button'
+import HeroTodoItems from 'src/components/HeroTodoItems'
 
 const HeroSection = () => {
   const { signUp } = useAuth()
@@ -36,14 +36,15 @@ const HeroSection = () => {
         </div>
       </div>
       <div className="relative hidden xl:block">
-        <img
+        {/* <img
           src="https://placedog.net/700/400"
           alt="hero todo img"
           className="hidden h-fit rounded-md xl:block"
         />
         <p className="absolute bottom-3 left-3 w-fit rounded-md bg-main-red px-4 py-3 text-white">
           Placeholder Img
-        </p>
+        </p> */}
+        <HeroTodoItems />
       </div>
     </div>
   )
