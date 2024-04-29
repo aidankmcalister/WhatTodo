@@ -15,6 +15,8 @@ CREATE TABLE "User" (
 CREATE TABLE "TodoItem" (
     "id" TEXT NOT NULL,
     "title" TEXT NOT NULL,
+    "description" TEXT,
+    "priority" INTEGER NOT NULL DEFAULT 2,
     "completed" BOOLEAN NOT NULL DEFAULT false,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
