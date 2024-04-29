@@ -28,6 +28,7 @@ export const QUERY: TypedDocumentNode<
       title
       completed
       description
+      priority
       createdAt
     }
   }
