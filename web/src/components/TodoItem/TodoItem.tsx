@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { useState } from 'react'
 
 import { MinusCircleIcon, CheckCircleIcon } from '@heroicons/react/24/outline'
@@ -15,10 +17,18 @@ export const DELETE_TODO_ITEM_MUTATION = gql`
 `
 
 export const UPDATE_TODO_ITEM_MUTATION = gql`
-  mutation UpdateTodoItemMutation($id: String!, $completed: Boolean!) {
-    updateTodoItem(id: $id, input: { completed: $completed }) {
+  mutation UpdateTodoItemMutation(
+    $id: String!
+    $completed: Boolean!
+    $priority: Int!
+  ) {
+    updateTodoItem(
+      id: $id
+      input: { completed: $completed, priority: $priority }
+    ) {
       id
       title
+      priority
       completed
     }
   }
@@ -59,6 +69,14 @@ const TodoItem = ({ item, filterStates }) => {
     })
   }
 
+  const handlePriorityClick = (level, event) => {
+    event.stopPropagation()
+    event.preventDefault()
+    updateTodoItem({
+      variables: { id: item.id, priority: level, completed: completed },
+    })
+  }
+
   return (
     <li
       className={`cursor-pointer rounded-md border bg-neutral-50 shadow-sm dark:border-gray-700 dark:bg-gray-800 ${
@@ -94,6 +112,40 @@ const TodoItem = ({ item, filterStates }) => {
                 {format(item.createdAt, 'PP')}
               </p>
             </div>
+            <ul className="flex space-x-3">
+              <li
+                className="rounded-full p-2 hover:bg-green-500/10"
+                onClick={(e) => handlePriorityClick(1, e)}
+              >
+                <div
+                  className={`h-3 w-3 rounded-full ${
+                    item.priority === 1 ? 'bg-green-500/80' : 'bg-green-500/20'
+                  }`}
+                ></div>
+              </li>
+              <li
+                className="rounded-full p-2 hover:bg-yellow-500/10"
+                onClick={(e) => handlePriorityClick(2, e)}
+              >
+                <div
+                  className={`h-3 w-3 rounded-full ${
+                    item.priority === 2
+                      ? 'bg-yellow-500/80'
+                      : 'bg-yellow-500/20'
+                  }`}
+                ></div>
+              </li>
+              <li
+                className="rounded-full p-2 hover:bg-red-500/10"
+                onClick={(e) => handlePriorityClick(3, e)}
+              >
+                <div
+                  className={`h-3 w-3 rounded-full ${
+                    item.priority === 3 ? 'bg-red-500/80' : 'bg-red-500/20'
+                  }`}
+                ></div>
+              </li>
+            </ul>
             <TrashIcon
               className="w-9 rounded-full p-1.5 md:hover:bg-main-red/20 md:hover:text-main-red/80 dark:text-gray-300 md:dark:hover:bg-main-red/20"
               onClick={handleDelete}
