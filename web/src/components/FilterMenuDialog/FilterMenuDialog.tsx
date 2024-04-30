@@ -32,6 +32,15 @@ const FilterMenuDialog = ({ open, setOpen, setFilterStates, filterStates }) => {
     }))
   }
 
+  const togglePriorityLevel = (level) => {
+    setFilterStates((prev) => ({
+      ...prev,
+      priorityLevels: prev.priorityLevels.includes(level)
+        ? prev.priorityLevels.filter((item) => item !== level)
+        : [...prev.priorityLevels, level],
+    }))
+  }
+
   return (
     <Transition.Root show={open} as={Fragment}>
       <Dialog as="div" className="relative z-10" onClose={setOpen}>
@@ -106,6 +115,35 @@ const FilterMenuDialog = ({ open, setOpen, setFilterStates, filterStates }) => {
                         Descriptions
                       </div>
                     </Button>
+                    <div className="flex space-x-3">
+                      <Button
+                        className={`flex w-1/3 items-center justify-center  py-2 ${
+                          !filterStates.priorityLevels.includes(1) &&
+                          'opacity-50'
+                        }`}
+                        onClick={() => togglePriorityLevel(1)}
+                      >
+                        <div className="h-5 w-5 rounded-full bg-green-500/80"></div>
+                      </Button>
+                      <Button
+                        className={`flex w-1/3 items-center justify-center  py-2 ${
+                          !filterStates.priorityLevels.includes(2) &&
+                          'opacity-50'
+                        }`}
+                        onClick={() => togglePriorityLevel(2)}
+                      >
+                        <div className="h-5 w-5 rounded-full bg-yellow-500/80"></div>
+                      </Button>
+                      <Button
+                        className={`flex w-1/3 items-center justify-center py-2 ${
+                          !filterStates.priorityLevels.includes(3) &&
+                          'opacity-50'
+                        }`}
+                        onClick={() => togglePriorityLevel(3)}
+                      >
+                        <div className="h-5 w-5 rounded-full bg-red-500/80"></div>
+                      </Button>
+                    </div>
                   </div>
                 </div>
               </Dialog.Panel>

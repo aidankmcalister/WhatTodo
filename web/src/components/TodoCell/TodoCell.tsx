@@ -39,6 +39,7 @@ const initialFilterStates = {
   showCompleted: true,
   showIncomplete: true,
   showDescriptions: false,
+  priorityLevels: [],
 }
 
 export const Loading = () => (
@@ -97,16 +98,23 @@ export const Success = ({
 }
 
 function filterTodos(todoItems, filterStates) {
-  let filteredTodos = [...todoItems] // Make a copy of the original todoItems
+  let filteredTodos = [...todoItems]
 
   // If showCompleted is 'false', filter out completed todo items
-  if (filterStates.showCompleted === false) {
+  if (!filterStates.showCompleted) {
     filteredTodos = filteredTodos.filter((item) => !item.completed)
   }
 
   // If showIncomplete is 'false', filter out incomplete todo items
-  if (filterStates.showIncomplete === false) {
+  if (!filterStates.showIncomplete) {
     filteredTodos = filteredTodos.filter((item) => item.completed)
+  }
+
+  // If priorityLevels are provided and not empty, filter by priority levels
+  if (filterStates.priorityLevels.length > 0) {
+    filteredTodos = filteredTodos.filter((item) =>
+      filterStates.priorityLevels.includes(item.priority)
+    )
   }
 
   return filteredTodos
