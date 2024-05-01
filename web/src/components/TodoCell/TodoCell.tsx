@@ -72,7 +72,7 @@ export const Success = ({
             setNewTodoOpen((prev) => !prev)
           }}
         >
-          Create New Todo
+          Create New Todo (Test)
         </Button>
         <button
           className="mb-3 flex h-10 w-10 cursor-pointer items-center justify-center rounded-md bg-main-red font-medium text-white shadow-sm hover:bg-gray-200 hover:bg-main-red/90"
